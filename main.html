@@ -1,161 +1,604 @@
-#include <stdio.h>
-
-    #define ELEMENTS 118
-    
-    typedef struct {
-        int atomicNumber;
-        char name[20];
-        char symbol[3];
-        double atomicWeight;
-    } Element;
-    
-    void initializePeriodicTable(Element periodicTable[]) {
-        periodicTable[1] = (Element){1,"Hydrogen", "H", 1.008};
-        periodicTable[2] = (Element){2,"Helium", "He", 4.0026};
-        periodicTable[3] = (Element){3,"Lithium", "Li", 6.94};
-        periodicTable[4] = (Element){4,"Beryllium", "Be", 9.0122};
-        periodicTable[5] = (Element){5,"Boron", "B", 10.81};
-        periodicTable[6] = (Element){6,"Carbon", "C", 12.011};
-        periodicTable[7] = (Element){7,"Nitrogen", "N", 14.007};
-        periodicTable[8] = (Element){8,"Oxygen", "O", 15.999};
-        periodicTable[9] =  (Element){9,"Fluorine", "F", 18.998};
-        periodicTable[10] = (Element){10,"Neon", "Ne", 20.180};
-        periodicTable[11] = (Element){11,"Sodium", "Na", 22.990};
-        periodicTable[12] = (Element){12,"Magnesium", "Mg", 24.305};
-        periodicTable[13] = (Element){13,"Aluminum", "Al", 26.982};
-        periodicTable[14] = (Element){14,"Silicon", "Si", 28.085};
-        periodicTable[15] = (Element){15,"Phosphorus", "P", 30.974};
-        periodicTable[16] = (Element){16,"Sulfur", "S", 32.06};
-        periodicTable[17] = (Element){17,"Chlorine", "Cl", 35.45};
-        periodicTable[18] = (Element){18,"Argon", "Ar", 39.948};
-        periodicTable[19] = (Element){19,"Potassium", "K", 39.098};
-        periodicTable[20] = (Element){20,"Calcium", "Ca", 40.078};
-        periodicTable[21] = (Element){21,"Scandium", "Sc", 44.956};
-        periodicTable[22] = (Element){22,"Titanium", "Ti", 47.867};
-        periodicTable[23] = (Element){23,"Vanadium", "V", 50.942};
-        periodicTable[24] = (Element){24,"Chromium", "Cr", 52.00};
-        periodicTable[25] = (Element){25,"Manganese", "Mn", 54.938};
-        periodicTable[26] = (Element){26,"Iron", "Fe", 55.845};
-        periodicTable[27] = (Element){27,"Cobalt", "Co", 58.933};
-        periodicTable[28] = (Element){28,"Nickel", "Ni", 58.6934};
-        periodicTable[29] = (Element){29,"Copper", "Cu", 63.546};
-        periodicTable[30] = (Element){30,"Zinc", "Zn", 65.38};
-        periodicTable[31] = (Element){31,"Gallium", "Ga", 69.723};
-        periodicTable[32] = (Element){32,"Germanium", "Ge", 72.63};
-        periodicTable[33] = (Element){33, "Arsenic", "As", 74.922};
-        periodicTable[34] = (Element){34, "Selenium", "Se", 78.971};
-        periodicTable[35] = (Element){35,"Bromine", "Br", 79.904};
-        periodicTable[36] = (Element){36,"Krypton", "Kr", 83.798};
-        periodicTable[37] = (Element){37,"Rubidium", "Rb", 85.468};
-        periodicTable[38] = (Element){38,"Strontium", "Sr", 87.62};
-        periodicTable[39] = (Element){39,"Yttrium", "Y", 88.905};
-        periodicTable[40] = (Element){40,"Zirconium", "Zr", 91.224};
-        periodicTable[41] = (Element){41,"Niobium", "Nb", 92.906};
-        periodicTable[42] = (Element){42,"Molybdenum", "Mo", 95.95};
-        periodicTable[43] = (Element){43,"Technetium", "Tc", 98.0};
-        periodicTable[44] = (Element){44,"Ruthenium", "Ru", 101.07};
-        periodicTable[45] = (Element){45,"Rhodium", "Rh", 102.91};
-        periodicTable[46] = (Element){46,"Palladium", "Pd", 106.42};
-        periodicTable[47] = (Element){47,"Silver", "Ag", 107.868};
-        periodicTable[48] = (Element){48,"Cadmium", "Cd", 112.414};
-        periodicTable[49] = (Element){49,"Indium", "In", 114.818};
-        periodicTable[50] = (Element){50,"Tin", "Sn", 118.710};
-        periodicTable[51] = (Element){51,"Antimony", "Sb", 121.760};
-        periodicTable[52] = (Element){52,"Tellurium", "Te", 127.60};
-        periodicTable[53] = (Element){53,"Iodine", "I", 126.904};
-        periodicTable[54] = (Element){54,"Xenon", "Xe", 131.293};
-        periodicTable[55] = (Element){55,"Cesium", "Cs", 132.905};
-        periodicTable[56] = (Element){56,"Barium", "Ba", 137.327};
-        periodicTable[57] = (Element){57,"Lanthanum", "La", 138.905};
-        periodicTable[58] = (Element){58,"Cerium", "Ce", 140.116};
-        periodicTable[59] = (Element){59,"Praseodymium", "Pr", 140.907};
-        periodicTable[60] = (Element){60,"Neodymium", "Nd", 144.242};
-        periodicTable[61] = (Element){61,"Promethium", "Pm", 145.0};
-        periodicTable[62] = (Element){62,"Samarium", "Sm", 150.36};
-        periodicTable[63] = (Element){63,"Europium", "Eu", 151.964};
-        periodicTable[64] = (Element){64,"Gadolinium", "Gd", 157.25};
-        periodicTable[65] = (Element){65,"Terbium", "Tb", 158.925};
-        periodicTable[66] = (Element){66,"Dysprosium", "Dy", 162.500};
-        periodicTable[67] = (Element){67,"Holmium", "Ho", 164.930};
-        periodicTable[68] = (Element){68,"Erbium", "Er", 167.259};
-        periodicTable[69] = (Element){69,"Thulium", "Tm", 168.934};
-        periodicTable[70] = (Element){70,"Ytterbium", "Yb", 173.04};
-        periodicTable[71] = (Element){71,"Lutetium", "Lu", 175.000};
-        periodicTable[72] = (Element){72,"Hafnium", "Hf", 178.49};
-        periodicTable[73] = (Element){73,"Tantalum", "Ta", 180.947};
-        periodicTable[74] = (Element){74,"Tungsten", "W", 183.84};
-        periodicTable[75] = (Element){75,"Rhenium", "Re", 186.207};
-        periodicTable[76] = (Element){76,"Osmium", "Os", 190.23};
-        periodicTable[77] = (Element){77,"Iridium", "Ir", 192.217};
-        periodicTable[78] = (Element){78,"Platinum", "Pt", 195.084};
-        periodicTable[79] = (Element){79,"Gold", "Au", 196.967};
-        periodicTable[80] = (Element){80,"Mercury", "Hg", 200.592};
-        periodicTable[81] = (Element){81,"Thallium", "Tl", 204.38};
-        periodicTable[82] = (Element){62,"Lead", "Pb", 207.2};
-        periodicTable[83] = (Element){83,"Bismuth", "Bi", 208.980};
-        periodicTable[84] = (Element){84,"Polonium", "Po", 209.0};
-        periodicTable[85] = (Element){85,"Astatine", "At", 210.0};
-        periodicTable[86] = (Element){86,"Radon", "Rn", 222.0};
-        periodicTable[87] = (Element){87, "Francium", "Fr", 223.0};
-        periodicTable[88] = (Element){88,"Radium", "Ra", 226.0};
-        periodicTable[89] = (Element){89,"Actinium", "Ac", 227.0};
-        periodicTable[90] = (Element){90,"Thorium", "Th", 232.037};
-        periodicTable[91] = (Element){91,"Protactinium", "Pa", 231.035},
-        periodicTable[92] = (Element){92,"Uranium", "U", 238.028};
-        periodicTable[93] = (Element){93,"Neptunium", "Np", 237.0};
-        periodicTable[94] = (Element){94,"Plutonium", "Pu", 244.0};
-        periodicTable[95] = (Element){95,"Americium", "Am", 243.0};
-        periodicTable[96] = (Element){96,"Curium", "Cm", 247.0};
-        periodicTable[97] = (Element){97,"Berkelium", "Bk", 247.0};
-        periodicTable[98] = (Element){98,"Californium", "Cf", 251.0};
-        periodicTable[99] = (Element){99,"Einsteinium", "Es", 252.0};
-        periodicTable[100] = (Element){100,"Fermium", "Fm", 257.0};
-        periodicTable[101] = (Element){101,"Mendelevium", "Md", 258.0};
-        periodicTable[102] = (Element){102,"Nobelium", "No", 259.0};
-        periodicTable[103] = (Element){103,"Lawrencium", "Lr", 262.0};
-        periodicTable[104] = (Element){104,"Rutherfordium", "Rf", 267.0};
-        periodicTable[105] = (Element){105,"Dubnium", "Db", 270.0};
-        periodicTable[106] = (Element){106,"Seaborgium", "Sg", 271.0};
-    
-        periodicTable[107] = (Element){107,"Bohrium", "Bh", 270.0};
-        periodicTable[108] = (Element){108,"Hassium", "Hs", 277.0};
-        periodicTable[109] = (Element){109,"Meitnerium", "Mt", 278.0};
-        periodicTable[110] = (Element){110,"Darmstadtium", "Ds", 281.0};
-    
-        periodicTable[111] =(Element){111,"Roentgenium", "Rg", 280.0};
-        periodicTable[112] = (Element){112,"Copernicium", "Cn", 285.0};
-    
-        periodicTable[113] = (Element){113,"Nihonium", "Nh", 284.0};
-        periodicTable[114] = (Element){114,"Flerovium", "Fl", 289.0};
-    
-        periodicTable[115] = (Element){115,"Moscovium", "Mc", 288.0};
-    
-        periodicTable[116] = (Element){116,"Livermorium", "Lv", 293.0};
-    
-        periodicTable[117] = (Element){117, "Tennessine", "Ts", 294.0};
-        periodicTable[118] = (Element){118,"Oganesson", "Og", 294.0};
-    }
-    
-    void printElement(Element e) {
-        printf("Atomic Number: %d\n", e.atomicNumber);
-        printf("Name: %s\n", e.name);
-        printf("Symbol: %s\n", e.symbol);
-        printf("Atomic Weight: %.4f\n\n", e.atomicWeight);
-    }
-    
-    int main() {
-        Element periodicTable[ELEMENTS];
-        initializePeriodicTable(periodicTable);
-    
-        int atomicNumber;
-        printf("Enter the atomic number of the element (1-118): ");
-        scanf("%d", &atomicNumber);
-    
-        if (atomicNumber < 1 || atomicNumber > ELEMENTS) {
-            printf("Invalid atomic number. Please enter a number between 1 and 118.\n");
-        } else {
-            printElement(periodicTable[atomicNumber - 1]);
+<!DOCTYPE html>
+<html>
+    <title>e-Commerce Website</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: linear-gradient(to right,#ff7e5f,#feb47b);
         }
-    
-        return 0;
-    }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background-color: #A42838;
+            color: white;
+        }
+
+        .logo {
+            font-size: 24px;
+font-weight:bold;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 15px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+background-color:jade;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        .product-list {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .product {
+            background-color: #fff;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: calc(33.333% - 40px); /* Three products per row */
+        }
+
+        .product img {
+            width: 60%;
+            height: auto;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #ff4500;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #ff6347;
+        }
+
+        .reviews {
+            margin-top: 20px;
+            text-align: left;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #333;
+            color: #fff;
+        }
+
+        .cart {
+            background-color: #fff;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .visible {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">LIFE COLLECTION</div>
+        <nav>
+            <ul>
+                <li><a href="#" onclick="showPage('home')">Home</a></li>
+                <li><a href="#" onclick="showPage('electronics')">Electronics</a></li>
+                <li><a href="#" onclick="showPage('clothing')">Clothing</a></li>
+                <li><a href="#" onclick="showPage('books')">Books</a></li>
+                <li><a href="#" onclick="showPage('cart')">Cart</a></li>
+                <li><a href="#" onclick="showPage('checkout')">Checkout</a></li>
+                <li><a href="#" onclick="showPage('contact')">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div id="home" class="page visible">
+            <h1>Welcome to Life Collection</h1>
+            <p>Your one-stop shop for all your needs.</p>
+<img src="C:\Users\HP\Pictures\Saved Pictures\Screenshot 2024-12-25 152622.png"alt="life">
+        </div>
+        <div id="electronics" class="page hidden">
+            <h1>Electronics</h1>
+            <section class="product-list">
+                <div class="product">
+                    <img src="C:\Users\HP\Downloads\WhatsApp Image 2024-12-25 at 2.46.24 PM.jpeg" alt="Electronic Product 1">
+                    <h3>Electronic Product 1</h3>
+                    <p> ₹1299.99</p>
+                    <button onclick="addToCart('Electronic Product 1', 1299.99)">Add to Cart</button>
+                    <div class="reviews">
+                        <h4>Customer Reviews</h4>
+                        <p>Amazing quality! - Alice</p>
+                        <p>Worth every penny. - Bob</p>
+<p>good -Mahtab Alam</p>
+                    </div>
+                </div>
+ <div class="product">
+                    <img src="C:\Users\HP\Downloads\WhatsApp Image 2024-12-25 at 2.45.30 PM.jpeg"alt="Electronic Product 2">
+                    <h3>Electronic Product 2</h3>
+                    <p> ₹1099.99</p>
+                    <button onclick="addToCart('Electronic Product 2', 1099.99)">Add to Cart</button>
+                    <div class="reviews">
+                        <h4>Customer Reviews</h4>
+                        <p>Amazing quality - pooja</p>
+                        <p>Worth  - supriti</p>
+<p>nice product - paghan</p>
+                    </div>
+                </div>
+ <div class="product">
+                    <img src="C:\Users\HP\Downloads\WhatsApp Image 2024-12-25 at 2.44.34 PM.jpeg"" alt="Electronic Product 3">
+                    <h3>Electronic Product 3</h3>
+                    <p> ₹1039.99</p>
+                    <button onclick="addToCart('Electronic Product 3', 1039.99)">Add to Cart</button>
+                    <div class="reviews">
+                        <h4>Customer Reviews</h4>
+                        <p>super quality! - sunda</p>
+                        <p>Worth the penny - </p>
+<p>ver nice -sharmi</p>
+                    </div>
+                </div>
+ <div class="product">
+                    <img src="C:\Users\HP\Downloads\WhatsApp Image 2024-12-25 at 2.43.45 PM.jpeg"alt="Electronic Product 4">
+                    <h3>Electronic Product 4</h3>
+                    <p> ₹1025.99</p>
+                    <button onclick="addToCart('Electronic Product 4', 1025.99)">Add to Cart</button>
+                    <div class="reviews">
+                        <h4>Customer Reviews</h4>
+                        <p> quality! - shara</p>
+                        <p>nice - Bob</p>
+<p>excellent -sam</p>
+                    </div>
+                </div>
+               <div class="product">
+                    <img src="C:\Users\HP\Downloads\WhatsApp Image 2024-12-25 at 2.50.12 PM.jpeg"alt="Electronic Product 5">
+                    <h3>Electronic Product 5</h3>
+                    <p> ₹1025.99</p>
+                    <button onclick="addToCart('Electronic Product 5', 1025.99)">Add to Cart</button>
+                    <div class="reviews">
+                        <h4>Customer Reviews</h4>
+                        <p>Amazing  - Aice</p>
+                        <p>v.good - pops</p>
+<p>awesome -ram</p>
+                    </div>
+                </div>
+ <div class="product">
+                    <img src="C:\Users\HP\Downloads\WhatsApp Image 2024-12-25 at 2.51.10 PM.jpeg"alt="Electronic Product 6">
+                    <h3>Electronic Product 6</h3>
+                    <p> ₹1225.99</p>
+                    <button onclick="addToCart('Electronic Product 6', 1225.99)">Add to Cart</button>
+                    <div class="reviews">
+                        <h4>Customer Reviews</h4>
+                        <p>Amazing quality! -raj</p>
+                        <p>Worth every penny. - kavin</p>
+                    </div>
+                </div>
+<div class="product">
+                    <img src="C:\Users\HP\Downloads\WhatsApp Image 2024-12-26 at 2.31.22 PM (1).jpeg"alt="Electronic Product 7">
+                    <h3>Electronic Product 7</h3>
+                    <p> ₹20225.99</p>
+                    <button onclick="addToCart('Electronic Product 7', 20225.99)">Add to Cart</button>
+                    <div class="reviews">
+                        <h4>Customer Reviews</h4>
+                        <p>Amazing quality! -ravi</p>
+                        <p>Worth every penny. - kavin</p>
+                    </div>
+                </div>
+<div class="product">
+                    <img src="C:\Users\HP\Downloads\WhatsApp Image 2024-12-26 at 2.31.22 PM.jpeg"alt="Electronic Product 8">
+                    <h3>Electronic Product 8</h3>
+                    <p> ₹10225.99</p>
+                    <button onclick="addToCart('Electronic Product 8', 10225.99)">Add to Cart</button>
+                    <div class="reviews">
+                        <h4>Customer Reviews</h4>
+                        <p>Amazing  -jayam</p>
+                        <p>Worth - kav</p>
+                    </div>
+                </div>
+<div class="product">
+                    <img src="C:\Users\HP\Downloads\WhatsApp Image 2024-12-26 at 2.24.15 PM (2).jpeg"alt="Electronic Product 9">
+                    <h3>Electronic Product 9</h3>
+                    <p> ₹12525.99</p>
+                    <button onclick="addToCart('Electronic Product 9', 12525.99)">Add to Cart</button>
+                    <div class="reviews">
+                        <h4>Customer Reviews</h4>
+                        <p>good -ani </p>
+                        <p>ver nice  - kumaran</p>
+                    </div>
+                </div>
+<div class="product">
+                    <img src="C:\Users\HP\Downloads\WhatsApp Image 2024-12-26 at 2.24.15 PM (1).jpeg"alt="Electronic Product 10">
+                    <h3>Electronic Product 10</h3>
+                    <p> ₹30225.99</p>
+                    <button onclick="addToCart('Electronic Product 10', 30225.99)">Add to Cart</button>
+                    <div class="reviews">
+                        <h4>Customer Reviews</h4>
+                        <p>ver good - aarav</p>
+                        <p>excellent - dhruv</p>
+<p>nice-kabri</p>
+                    </div>
+                </div>
+<div class="product">
+                    <img src="C:\Users\HP\Downloads\WhatsApp Image 2024-12-26 at 2.24.15 PM.jpeg"alt="Electronic Product 11">
+                    <h3>Electronic Product 11</h3>
+                    <p> ₹14525.99</p>
+                    <button onclick="addToCart('Electronic Product 11', 14525.99)">Add to Cart</button>
+                    <div class="reviews">
+                        <h4>Customer Reviews</h4>
+                        <p>wow -oliver</p>
+                        <p>Worth the money - ayaan</p>
+<p>good -divit</p>
+                    </div>
+                </div>
+<div class="product">
+                    <img src="C:\Users\HP\Downloads\WhatsApp Image 2024-12-26 at 2.24.14 PM.jpeg"alt="Electronic Product 12">
+                    <h3>Electronic Product 12</h3>
+                    <p> ₹1236.99</p>
+                    <button onclick="addToCart('Electronic Product 12', 1236.99)">Add to Cart</button>
+                    <div class="reviews">
+                        <h4>Customer Reviews</h4>
+                        <p> quality! -raja</p>
+                        <p>good - jack</p>
+                    </div>
+                </div>
+
+            </section>
+        </div>
+        <div id="clothing" class="page hidden">
+            <h1>Clothing</h1>
+            <section class="product-list">
+                <div class="product">
+                    <img src="C:\Users\HP\Downloads\WhatsApp Image 2024-08-18 at 11.34.12 AM.jpeg" alt="Clothing Product 1">
+                    <h3>Clothing Product 1</h3>
+                    <p> ₹1049.99</p>
+                    <button onclick="addToCart('Clothing Product 1', 1049.99)">Add to Cart</button>
+                    <div class="reviews">
+                        <h4>Customer Reviews</h4>
+                        <p> comfortable. - asha</p>
+                        <p> fit! - ayushi</p>
+                    </div>
+                </div>
+ <div class="product">
+                    <img src="C:\Users\HP\Downloads\WhatsApp Image 2024-08-18 at 11.53.31 AM.jpeg" alt="Clothing Product 2">
+                    <h3>Clothing Product 2</h3>
+                    <p> ₹1039.99</p>
+                    <button onclick="addToCart('Clothing Product 2', 1039.99)">Add to Cart</button>
+                    <div class="reviews">
+                        <h4>Customer Reviews</h4>
+                        <p>Stylish . - avni</p>
+                        <p>good - bina</p>
+                    </div>
+                </div>
+ <div class="product">
+                    <img src="C:\Users\HP\Downloads\WhatsApp Image 2024-08-18 at 11.53.51 AM.jpeg" alt="Clothing Product 3">
+                    <h3>Clothing Product 3</h3>
+                    <p> ₹1025.99</p>
+                    <button onclick="addToCart('Clothing Product 3', 1025.99)">Add to Cart</button>
+                    <div class="reviews">
+                        <h4>Customer Reviews</h4>
+                        <p>Stylish and comfortable. - ena</p>
+                        <p>Great fit! - ela</p>
+                    </div>
+                </div>
+ <div class="product">
+                    <img src="C:\Users\HP\Downloads\WhatsApp Image 2024-08-18 at 4.20.42 PM.jpeg" alt="Clothing Product 4">
+                    <h3>Clothing Product 4</h3>
+                    <p> ₹1021.99</p>
+                    <button onclick="addToCart('Clothing Product 4', 1021.99)">Add to Cart</button>
+                    <div class="reviews">
+                        <h4>Customer Reviews</h4>
+                        <p>very good - hiya</p>
+                        <p>excellent - ira</p>
+                    </div>
+                </div>
+ <div class="product">
+                    <img src="C:\Users\HP\Downloads\WhatsApp Image 2024-08-18 at 4.20.28 PM.jpeg" alt="Clothing Product 5">
+                    <h3>Clothing Product 5</h3>
+                    <p> ₹1209.99</p>
+                    <button onclick="addToCart('Clothing Product 5', 1209.99)">Add to Cart</button>
+                    <div class="reviews">
+                        <h4>Customer Reviews</h4>
+                        <p>awesome - lina</p>
+                        <p>Great color- myra</p>
+                    </div>
+                </div>
+ <div class="product">
+                    <img src="C:\Users\HP\Downloads\WhatsApp Image 2024-08-18 at 4.22.01 PM.jpeg" alt="Clothing Product 6">
+                    <h3>Clothing Product 6</h3>
+                    <p> ₹1049.99</p>
+                    <button onclick="addToCart('Clothing Product 6', 1049.99)">Add to Cart</button>
+                    <div class="reviews">
+                        <h4>Customer Reviews</h4>
+                        <p>wow! - tara</p>
+                        <p>good - mia</p>
+<p>
+                    </div>
+                </div>
+<div class="product">
+                    <img src="C:\Users\HP\Downloads\WhatsApp Image 2024-12-26 at 2.39.16 PM.jpeg"alt="Clothing Product 7">
+                    <h3>Clothing Product 7</h3>
+                    <p> ₹2049.99</p>
+                    <button onclick="addToCart('Clothing Product 7', 2049.99)">Add to Cart</button>
+                    <div class="reviews">
+                        <h4>Customer Reviews</h4>
+                        <p>Stylish  - rol</p>
+                        <p>Great  - Dave</p>
+                    </div>
+                </div>
+<div class="product">
+                    <img src="C:\Users\HP\Downloads\WhatsApp Image 2024-12-26 at 2.39.16 PM (1).jpeg"alt="Clothing Product 8">
+                    <h3>Clothing Product 8</h3>
+                    <p> ₹1159.99</p>
+                    <button onclick="addToCart('Clothing Product 8', 1159.99)">Add to Cart</button>
+                    <div class="reviews">
+                        <h4>Customer Reviews</h4>
+                        <p>Stylish and comfortable. - tithi</p>
+                        <p>wonderfull - usha</p>
+                    </div>
+                </div>
+<div class="product">
+                    <img src="C:\Users\HP\Downloads\WhatsApp Image 2024-12-26 at 2.39.17 PM.jpeg" alt="Clothing Product 9">
+                    <h3>Clothing Product 9</h3>
+                    <p> ₹1049.99</p>
+                    <button onclick="addToCart('Clothing Product 9', 1049.99)">Add to Cart</button>
+                    <div class="reviews">
+                        <h4>Customer Reviews</h4>
+                        <p>greatfull - varsha</p>
+                        <p>Great  - tanya</p>
+                    </div>
+                </div>
+<div class="product">
+                    <img src="C:\Users\HP\Downloads\WhatsApp Image 2024-12-26 at 2.39.17 PM (2).jpeg" alt="Clothing Product 10">
+                    <h3>Clothing Product 10</h3>
+                    <p> ₹1149.99</p>
+                    <button onclick="addToCart('Clothing Product 10', 1149.99)">Add to Cart</button>
+                    <div class="reviews">
+                        <h4>Customer Reviews</h4>
+                        <p>good - preethi</p>
+                        <p>pretty - jiya</p>
+                    </div>
+                </div>
+<div class="product">
+                    <img src="C:\Users\HP\Downloads\WhatsApp Image 2024-12-26 at 2.39.18 PM.jpeg" alt="Clothing Product 11">
+                    <h3>Clothing Product 11</h3>
+                    <p> ₹1249.99</p>
+                    <button onclick="addToCart('Clothing Product 11', 1249.99)">Add to Cart</button>
+                    <div class="reviews">
+                        <h4>Customer Reviews</h4>
+                        <p>great dress. - zara</p>
+                        <p>Great fit! - ziya</p>
+                    </div>
+                </div>
+<div class="product">
+                    <img src="C:\Users\HP\Downloads\WhatsApp Image 2024-12-26 at 2.39.18 PM (1).jpeg" alt="Clothing Product 12">
+                    <h3>Clothing Product 12</h3>
+                    <p> ₹1349.99</p>
+                    <button onclick="addToCart('Clothing Product 12', 1349.99)">Add to Cart</button>
+                    <div class="reviews">
+                        <h4>Customer Reviews</h4>
+                        <p>Stylish and comfortable. - anika</p>
+                        <p>Great fit! - Daviya</p>
+                    </div>
+                </div>
+                
+            </section>
+        </div>
+        <div id="books" class="page hidden">
+            <h1>Books</h1>
+            <section class="product-list">
+                <div class="product">
+                    <img src="C:\Users\HP\Downloads\WhatsApp Image 2024-12-25 at 3.00.31 PM.jpeg"alt="Book 1">
+                    <h3>Book 1</h3>
+                    <p>₹519.99</p>
+                    <button onclick="addToCart('Book 1', 519.99)">Add to Cart</button>
+                    <div class="reviews">
+                        <h4>Customer Reviews</h4>
+                        <p>Couldn't put it down. - Eve</p>
+                        <p>Must-read! - Frank</p>
+                    </div>
+                </div>
+<div class="product">
+                    <img src="C:\Users\HP\Downloads\WhatsApp Image 2024-12-25 at 3.00.31 PM (3).jpeg" alt="Book 2">
+                    <h3>Book 2</h3>
+                    <p>₹619.99</p>
+                    <button onclick="addToCart('Book 2', 619.99)">Add to Cart</button>
+                    <div class="reviews">
+                        <h4>Customer Reviews</h4>
+                        <p>Couldn't put it down. - Eve</p>
+                        <p>Must-read! - Frank</p>
+                    </div>
+                </div>
+<div class="product">
+                    <img src="C:\Users\HP\Downloads\WhatsApp Image 2024-12-25 at 3.00.31 PM (2).jpeg"alt="Book 3">
+                    <h3>Book 3</h3>
+                    <p>₹709.99</p>
+                    <button onclick="addToCart('Book 1', 709.99)">Add to Cart</button>
+                    <div class="reviews">
+                        <h4>Customer Reviews</h4>
+                        <p>Couldn't put it down. - Eve</p>
+                        <p>Must-read! - Frank</p>
+                    </div>
+                </div>
+
+<div class="product">
+                    <img src="C:\Users\HP\Downloads\WhatsApp Image 2024-12-25 at 3.00.31 PM (1).jpeg" alt="Book 4">
+                    <h3>Book 4</h3>
+                    <p>₹319.99</p>
+                    <button onclick="addToCart('Book 4', 319.99)">Add to Cart</button>
+                    <div class="reviews">
+                        <h4>Customer Reviews</h4>
+                        <p>Couldn't put it down. - Eve</p>
+                        <p>Must-read! - Frank</p>
+                    </div>
+                </div>
+<div class="product">
+                    <img src="C:\Users\HP\Downloads\WhatsApp Image 2024-12-25 at 3.00.30 PM (1).jpeg" alt="Book 5">
+                    <h3>Book 5</h3>
+                    <p>₹619.99</p>
+                    <button onclick="addToCart('Book 5', 619.99)">Add to Cart</button>
+                    <div class="reviews">
+                        <h4>Customer Reviews</h4>
+                        <p>Couldn't put it down. - Eve</p>
+                        <p>Must-read! - Frank</p>
+                    </div>
+                </div>
+<div class="product">
+                    <img src="C:\Users\HP\Downloads\WhatsApp Image 2024-12-25 at 3.00.30 PM.jpeg" alt="Book 6">
+                    <h3>Book 6</h3>
+                    <p>₹419.99</p>
+                    <button onclick="addToCart('Book 6', 419.99)">Add to Cart</button>
+                    <div class="reviews">
+                        <h4>Customer Reviews</h4>
+                        <p>Couldn't put it down. - Eve</p>
+                        <p>Must-read! - Frank</p>
+                    </div>
+                </div>
+<div class="product">
+                    <img src="C:\Users\HP\Downloads\WhatsApp Image 2024-12-26 at 3.05.16 PM.jpeg" alt="Book 7">
+                    <h3>Book 7</h3>
+                    <p>₹519.99</p>
+                    <button onclick="addToCart('Book 7', 519.99)">Add to Cart</button>
+                    <div class="reviews">
+                        <h4>Customer Reviews</h4>
+                        <p>Couldn't put it down. - Eve</p>
+                        <p>Must-read! - Frank</p>
+                    </div>
+                </div>
+<div class="product">
+                    <img src="C:\Users\HP\Downloads\WhatsApp Image 2024-12-26 at 3.05.17 PM.jpeg" alt="Book 8">
+                    <h3>Book 8</h3>
+                    <p>₹429.99</p>
+                    <button onclick="addToCart('Book 8', 429.99)">Add to Cart</button>
+                    <div class="reviews">
+                        <h4>Customer Reviews</h4>
+                        <p>Couldn't put it down. - Eve</p>
+                        <p>Must-read! - Frank</p>
+                    </div>
+                </div>
+<div class="product">
+                    <img src= "C:\Users\HP\Downloads\WhatsApp Image 2024-12-26 at 3.05.17 PM (1).jpeg"alt="Book 9">
+                    <h3>Book 9</h3>
+                    <p>₹468.99</p>
+                    <button onclick="addToCart('Book 9', 468.99)">Add to Cart</button>
+                    <div class="reviews">
+                        <h4>Customer Reviews</h4>
+                        <p>Couldn't put it down. - Eve</p>
+                        <p>Must-read! - Frank</p>
+                    </div>
+                </div>
+<div class="product">
+                    <img src="C:\Users\HP\Downloads\WhatsApp Image 2024-12-26 at 3.05.17 PM (2).jpeg"alt="Book 10">
+                    <h3>Book 10</h3>
+                    <p>₹521.99</p>
+                    <button onclick="addToCart('Book 10', 521.99)">Add to Cart</button>
+                    <div class="reviews">
+                        <h4>Customer Reviews</h4>
+                        <p>Couldn't put it down. - Eve</p>
+                        <p>Must-read! - Frank</p>
+                    </div>
+                </div>
+<div class="product">
+                    <img src="C:\Users\HP\Downloads\WhatsApp Image 2024-12-26 at 3.05.17 PM (3).jpeg" alt="Book 11">
+                    <h3>Book 11</h3>
+                    <p>₹958.99</p>
+                    <button onclick="addToCart('Book 11', 958.99)">Add to Cart</button>
+                    <div class="reviews">
+                        <h4>Customer Reviews</h4>
+                        <p>Couldn't put it down. - Eve</p>
+                        <p>Must-read! - Frank</p>
+                    </div>
+                </div>
+                <div class="product">
+                    <img src="C:\Users\HP\Downloads\WhatsApp Image 2024-12-26 at 3.05.18 PM.jpeg"alt="Book 12">
+                    <h3>Book 12</h3>
+                    <p>₹547.99</p>
+                    <button onclick="addToCart('Book 12', 547.99)">Add to Cart</button>
+                    <div class="reviews">
+                        <h4>Customer Reviews</h4>
+                        <p>Couldn't put it down. - Eve</p>
+                        <p>Must-read! - Frank</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <div id="cart" class="page hidden">
+            <h1>Shopping Cart</h1>
+            <div class="cart"></div>
+        </div>
+        <div id="checkout" class="page hidden">
+            <h1>Checkout</h1>
+            <p>Review your items and proceed to checkout.</p>
+        </div>
+        <div id="contact" class="page hidden">
+            <h1>Contact Us</h1>
+            <p>Feel free to reach out to us at any time!</p>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 life collection. All rights reserved.</p>
+<p>gmail:raknanmon@gmail.com</p>
+<p>phone no:9742985523</p>
+<p>instagram:rnm._.aaa</p>
+    </footer>
+
+    <script>
+        let cart = [];
+
+        function addToCart(productName, productPrice) {
+            cart.push({ name: productName, price: productPrice });
+            alert(productName + " has been added to your cart at ₹ " + productPrice);
+            updateCart();
+        }
+
+        function updateCart() {
+            const cartElement = document.querySelector(".cart");
+            cartElement.innerHTML = "";
+            cart.forEach((item, index) => {
+                const itemElement = document.createElement("div");
+                itemElement.textContent = ${item.name} - $${item.price};
+                cartElement.appendChild(itemElement);
+            });
+        }
+
+        function showPage(pageId) {
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(page => {
+                page.classList.add('hidden');
+                page.classList.remove('visible');
+            });
+
+            document.getElementById(pageId).classList.remove('hidden');
+            document.getElementById(pageId).classList.add('visible');
+        }
+    </script>
+</body>
+</html>
+       
+       
+        
